@@ -1,17 +1,18 @@
-# Set-up
+**Set-up**
 
 ```
 composer install
 ```
 
-# Client
+**Client**
+
 Trigger the client
 
 ```
 php client.php
 ```
 
-**Console Output**
+*Console Output*
 ```
 lpt114@lpt114:~/workspace/php/rpc/php$ php client.php 
 Sending message 5c30c8063df3e_0
@@ -51,14 +52,14 @@ Array
 
 ```
 
-# RPC Worker 
+**RPC Worker** 
 Trigger the worker
 
 ```
 php server.php 
 ```
 
-**Console Output Worker1**
+*Console Output Worker1*
 ```
  [x] Awaiting RPC requests
  [.] fib(10)
@@ -82,7 +83,7 @@ php server.php
  [.] fib(1)
  [.] correlation_id(5c30c8063df3e_9)
 ```
-**Console Output Worker2**
+*Console Output Worker2*
 
 ```
  [x] Awaiting RPC requests
