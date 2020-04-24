@@ -5,6 +5,8 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 class FibonacciRpcClient
 {
+    // Hold the class instance.
+    private static $instance = null;
     private $connection;
     public  $channel;
     private $callback_queue;
@@ -12,7 +14,7 @@ class FibonacciRpcClient
     public $uniqArr;
     public $uniqid;
 
-    public function __construct()
+    private function __construct()
     {
         //uniqid to collect the batch results
         $this->uniqid = uniqid();
@@ -42,6 +44,16 @@ class FibonacciRpcClient
                 'onResponse'
             )
         );
+    }
+
+    public static function getInstance()
+    {
+      if(!self::$instance)
+      {
+        self::$instance = new FibonacciRpcClient();
+      }
+     
+      return self::$instance;
     }
 
     public function onResponse($rep)
@@ -82,9 +94,9 @@ class FibonacciRpcClient
             $this->channel->wait();
         }
     }
-}
 
-$fibonacci_rpc = new FibonacciRpcClient();
+}
+$fibonacci_rpc = FibonacciRpcClient::getInstance();
 $fibonacci_rpc->call();
 $fibonacci_rpc->wait();
 echo "our final response array in the received order \n";
