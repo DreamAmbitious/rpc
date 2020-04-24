@@ -1,3 +1,6 @@
+**Objective**
+Illustrates how the parallel task execution can be carried out in php leveraging rabbitmq's [rpc queue](https://www.rabbitmq.com/tutorials/tutorial-six-php.html).
+
 **Set-up**
 
 ```
